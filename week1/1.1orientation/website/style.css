@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #0078d4;
+}
+
+.verticalCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flex{
+    display: flex;
+}
+
+
+.navLink {
+    padding-left: 20px;
+    color: gray;
+}
+.navLink:hover{
+    color: white;
+}
+.topImage {
+    padding-right: 12px;
+}
+
+.parentdiv{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.searchInput {
+    border-radius: 5px;
+    border: 1px solid rgb(255, 255, 255, 0.2);
+    padding: 8px;
+    font-size: 16px;
+    background-color: black;
+}
+
+header {
+    background-color: black;
+    color: white;
+}
+
+.downloadButton{
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    padding: 7px;
+    padding-left: 0px;
+    width: 120px;
+    padding-right: 0px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.banner{
+    padding: 10px;
+    background-color: black;
+    color: gray;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.bannerLink {
+    padding-right: 8px;
+}
+
+.buttonBanner {
+    color: #9ba3b4;
+    background-color: rgba(255,255,255,0.04);
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 32px;
+    border: 1px solid rgba(255,255,255,0.07);
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.heroContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero {
+    background: linear-gradient(180deg, #0e0e0e 0%, #141414 100%);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 3em;
+    margin: 0;
+}
+
+
+
+.cta-button {
+    display: inline-block;
+    background: #0078d4;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    margin-top: 20px;
+   
+}
+
+.cta-button:hover {
+    background: #e5b800;
+}
+
+.heroContainer > div {
+    text-align:left;
+}

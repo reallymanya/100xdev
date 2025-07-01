@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function sum(a,b){
+    return a + b;
+}
+
+function canVote(age){
+    return age > 18; //returns true if age is greater than 18
+}
+
+function isEvenOdd(num){
+    if(num % 2 == 0){
+        console.log("Even");
+    }else{
+        console.log("Odd");
+    }
+}
+
+function sum(num){
+    let sum = 0;
+
+    for(let i = 1; i<=num;i++){
+        sum += i;
+    }
+    return sum;
+}
+
+function summ(num){
+    let sum = 0;
+    let i = 1;
+    while ( i<= num){
+        sum += i;
+        i++;
+    }
+    console.log(sum);
+}
+function greet(name){
+    console.log("Hello,  " + name);
+}
+
+let a = 10, b = 20;
+console.log(sum(a,b));
+console.log(canVote(19));
+isEvenOdd(15);
+console.log(sum(5));
+
+let users = ["manya", "sahil", "priya", "siddharth"];
+console.log(users[5]);
+
+greet("kirat");
+summ(5);
+    </script>
+</body>
+</html>
