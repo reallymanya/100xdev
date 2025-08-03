@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO</title>
+    <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+    <div class = "hello">
+        <h1>To-Do list</h1>
+        
+        <input type = "text" id="task" placeholder="Add a task">
+        <button onclick = "addTask()" class="but1">Add</button>
+
+        <ul id="tasklist"></ul>
+    </div>
+    <script>
+
+        // Get existing tasks or create empty list
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  
+    // Save tasks to localStorage
+    function saveTasks() {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+        //let tasks = [];
+function addTask(){
+    
+    const input = document.getElementById("task");
+    const text = input.value.trim();
+
+    if(text != "" ){
+        tasks.push(text);
+        input.value = "";
+          saveTasks();
+        showTasks();
+    }
+}
+
+ function deletetask(index) {
+      tasks.splice(index, 1); 
+      saveTasks();
+      showTasks(); 
+    }
+function editTask(index){
+    const newTask = prompt("Edit your task:", tasks[index]);
+    if (newTask !== null && newTask.trim() !== "") {
+        tasks[index] = newTask.trim();
+         saveTasks();
+        showTasks(); // Refresh the list
+    }
+}
+
+function showTasks(){
+   const tasklist =  document.getElementById("tasklist");
+    tasklist.innerHTML = "";
+
+    tasks.forEach((task,index) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.className = "task-test ";
+        span.textContent = task;
+
+        
+ const btnWrapper = document.createElement("div");
+        btnWrapper.className = "btn-wrapper";
+
+
+const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.className = "edit-btn";
+        editBtn.onclick = function () {
+            editTask(index);
+        };
+
+        const btn = document.createElement("button");
+        btn.className = "delete-btn";
+        btn.textContent = "X";
+        btn.onclick = function(){
+            deletetask(index);
+        };
+
+        btnWrapper.appendChild(editBtn);
+        btnWrapper.appendChild(btn);
+        li.appendChild(span);
+       li.appendChild(btnWrapper);
+    
+tasklist.appendChild(li);
+    });
+}
+showTasks();
+    </script>
+</body>
+</html>
