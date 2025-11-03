@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// SYNCHRONOUS JS CODE --> any code in which every line is being run by a thread
+//  one line at a time.
+
+
+        //sum of two numbers 
+    function sum(a,b){
+        return a + b;
+    }
+    let ans = sum(2,3);
+    console.log(ans);
+
+    // when input other than number
+    function sumadv(a,b){
+        return parseInt(a) + parseInt(b);
+    }
+    console.log(sumadv("20",30));
+
+    //sum from 1 to n
+    function summation(a){
+        // let ans = 0;
+        // for(let i = 1; i<=a; i++){
+        //     ans = ans + i;
+        // }
+        // console.log(ans);
+        console.log(a * (a+1)/2);
+        }
+
+    summation(5);
+        </script>
+</body>
+</html>
