@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do</title>
+</head>
+<body>
+  <input type="text" placeholder="Enter a task" id="todo-input">
+  <button id="add-btn">Add To-Do</button>
+
+  <div id="todo-container"></div>
+
+  <script>
+    let ctr = 1;
+
+    function deleteTodo(index) {
+      const element = document.getElementById(index);
+      if (element) element.remove(); // cleaner than parentNode.removeChild()
+    }
+
+    function addTodo() {
+      const inputEl = document.getElementById("todo-input");
+      const value = inputEl.value.trim();
+
+      // ✅ Validate empty input
+      if (value === "") {
+        alert("Please enter a to-do item.");
+        return;
+      }
+
+      // ✅ Create main todo container
+      const newDiv = document.createElement("div");
+      newDiv.setAttribute("id", ctr);
+      newDiv.style.marginTop = "8px";
+
+      // ✅ Create text node
+      const todoText = document.createElement("div");
+      todoText.textContent = `${ctr}. ${value}`;
+
+      // ✅ Create delete button
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.style.marginLeft = "10px";
+      deleteBtn.onclick = function() {
+        deleteTodo(ctr);
+      };
+
+      // ✅ Append elements
+      newDiv.appendChild(todoText);
+      newDiv.appendChild(deleteBtn);
+      document.getElementById("todo-container").appendChild(newDiv);
+
+      // ✅ Increment counter and clear input
+      ctr++;
+      inputEl.value = "";
+    }
+
+    // ✅ Better practice: attach event listener instead of inline onclick
+    document.getElementById("add-btn").addEventListener("click", addTodo);
+  </script>
+</body>
+</html>
