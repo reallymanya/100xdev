@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manya's Todo List</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div class="todo-app">
+        <h2>To-Do List <img src="icon.png" /></h2>
+        <div class="row">
+          <input type="text" id="input-box" placeholder="Add your text" />
+          <button onClick="addTask()">Add</button>
+        </div>
+        <ul id="task-container">
+          <!-- <li class = "checked">Task 1</li>
+         <li class = "checked">Task 2</li>
+          <li class = "checked">Task 3</li> -->
+        </ul>
+      </div>
+    </div>
+    <script>
+      const inputBox = document.getElementById("input-box");
+      const listContainer = document.getElementById("task-container");
+      const addButton = document.querySelector("button");
+
+      let taskBeingEdited = null;
+  
+      function addTask() {
+        if (inputBox.value === "") {
+          alert("You must write something");
+        } 
+
+        if (taskBeingEdited) {
+      taskBeingEdited.childNodes[0].textContent = inputBox.value;
+      taskBeingEdited = null;
+      addButton.textContent = "Add"; // revert button text
+      inputBox.value = "";
+      saveData();
+      return;
+    }
+          let li = document.createElement("li");
+          li.innerHTML = inputBox.value;
+          listContainer.appendChild(li);
+          let span = document.createElement("span");
+          span.innerHTML = "\u00d7";
+          li.appendChild(span);
+          let editBtn = document.createElement("span");
+          editBtn.innerHTML = "✏️";
+          editBtn.classList.add("edit");
+          li.appendChild(editBtn);
+        
+        inputBox.value = "";
+        saveData();
+      }
+
+  //    function editTask(li) {
+  //   const currentText = li.childNodes[0].textContent.trim();
+  //   inputBox.value = currentText; // put text in input box
+  //   li.remove(); // remove old task
+  //   saveData();
+  // }
+
+  
+
+      listContainer.addEventListener(
+        "click",
+        function (e) {
+          if (e.target.tagName === "LI") {
+            e.target.classList.toggle("checked");
+            saveData();
+          } else if (e.target.tagName === "SPAN" && e.target.innerHTML === "\u00d7") {
+            e.target.parentElement.remove();
+            saveData();
+          } else if (e.target.innerHTML === "✏️") {
+            taskBeingEdited = e.target.parentElement; // store reference
+            inputBox.value = taskBeingEdited.childNodes[0].textContent.trim();
+            addButton.textContent = "Update"; 
+          }
+        },
+        false
+      );
+
+   
+
+      function saveData() {
+        localStorage.setItem("data", listContainer.innerHTML);
+      }
+
+      function showTask() {
+        listContainer.innerHTML = localStorage.getItem("data");
+      }
+      showTask();
+    </script>
+  </body>
+</html>
