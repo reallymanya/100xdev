@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+#container{
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(145deg, #f6ac82, #ff7b4f);
+    padding: 10px;
+}
+
+.todo-app{
+width: 100%;
+max-width: 540px;
+background: #fff;
+margin: 100px auto 20px;
+padding: 40px 30px 70px;
+border-radius: 10px;
+}
+
+.todo-app h2{
+    color: #002765;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.todo-app h2 img{
+    width: 30px;
+    margin-left: 10px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    background: #edeef0;
+    padding-left: 20px;
+    margin-bottom: 25px;
+
+}
+
+input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+}
+
+button{
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    border-radius: 30px;
+    background: #ff5945;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+ul li {
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+ul li::before{
+    content: ' ';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+
+}
+
+ul li.checked{
+    color: #555;
+    text-decoration: line-through;
+}
+
+ul li.checked::before{
+    background-image: url(checked.png);
+}
+
+ul li span{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #555;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+}
+
+ul li span:hover{
+    background: #edeef0;
+}
+
+ul li .edit{
+    position: absolute;
+    right: 45px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* AUTH CONTAINER */
+#auth-section {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    margin: 120px auto;
+    padding: 40px 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#auth-section input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#auth-section button {
+    width: 48%;
+    margin-top: 10px;
+}
+
+/* HIDE TODO SECTION UNTIL LOGIN */
+#todo-section {
+    display: none;
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+    background: #ff5945;
+    padding: 8px 16px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manya's Todo List</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+  
+  </head>
+  <body>
+
+    <div id="auth-section">
+    <h2>Welcome</h2>
+    <input type="text" id="auth-username" placeholder="Username" />
+    <input type="password" id="auth-password" placeholder="Password" />
+
+    <button onclick="signup()">Signup</button>
+    <button onclick="signin()">Signin</button>
+    <p id="auth-message"></p>
+    </div>
+
+    <div id="todo-section">
+    <div id="container">
+      <div class="todo-app">
+        <h2>To-Do List <img src="icon.png" /></h2>
+        <div class="row">
+          <input type="text" id="input-box" placeholder="Add your text" />
+          <button onClick="addTask()">Add</button>
+        </div>
+
+        <input type="text" id="search-box" placeholder="Search tasks..." />
+        <ul id="task-container">
+        </ul>
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+
+      </div>
+    </div>
+    </div>
+   
+      <script src="script.js"></script>
+  </body>
+</html>

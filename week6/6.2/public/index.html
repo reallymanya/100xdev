@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Website</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+<body>
+    <div id="auth-section">
+
+    <div>
+        Signup
+        <input id = "signup-username" type = "text" placeholder = "Username" name = "Username">
+        <input id = "signup-password" type = "password" placeholder="Password" name = "Password">
+        <button onClick = "signup()">Submit</button>
+    </div>
+    <div>
+        Signin
+        <input id = "signin-username" type = "text" placeholder = "Username" name = "Username">
+        <input id = "signin-password" type = "password" placeholder="Password" name = "Password">
+        <button onClick = "signin()">Submit</button>
+    </div>
+      </div>
+       <div id="user-section" style="display:none;">
+    <div>
+        User Information:
+        <div id = "information"></div>
+    </div>
+    <div>
+        <button onClick = "logout()">Logout</button>
+    </div>
+    </div>
+</body>
+<script>
+//     Conditionally render the logout or the signin/ signup pages based on if the user is already logged in or not
+
+// if im logged in i should only see user info and logout button
+// if im not i shoud only see signup and signin
+
+    function showAuth() {
+    document.getElementById("auth-section").style.display = "block";
+    document.getElementById("user-section").style.display = "none";
+}
+
+function showUser() {
+    document.getElementById("auth-section").style.display = "none";
+    document.getElementById("user-section").style.display = "block";
+}
+//DONE
+window.onload = function () {
+    const token = localStorage.getItem("token");
+    if (token) {
+        showUser();
+        getUserInformation();
+    } else {
+        showAuth();
+    }
+};
+
+    async function signup(){
+        let username = document.getElementById("signup-username").value;
+        let password = document.getElementById("signup-password").value;
+
+        //axios
+       await axios.post("http://localhost:3000/signup",
+            {
+                username: username,
+                password: password
+            }
+        )
+        alert("You are signed in");
+    }
+
+     async function signin(){
+        let username = document.getElementById("signin-username").value;
+        let password = document.getElementById("signin-password").value;
+
+        //axios
+       const response = await axios.post("http://localhost:3000/signin",
+            {
+                username: username,
+                password: password
+            }
+        )
+        
+        localStorage.setItem("token",response.data.token);
+    }
+
+    async function getUserInformation(){
+        const response = await axios.get("http://localhost:3000/me",{
+            headers :{
+                token : localStorage.getItem("token")
+            }
+        })
+        document.getElementById("information").innerHTML = "Username: " + response.data.username + "Password: " + response.data.password;
+    }
+    if (localStorage.getItem("token")) {
+    getUserInformation();
+    }
+   
+
+    function logout(){
+        localStorage.removeItem("token");
+        document.getElementById("information").innerHTML = "";
+        alert("Logged out");
+    }
+</script>
+</html>
