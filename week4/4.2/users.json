@@ -1,0 +1,49 @@
+[
+  {
+    "id": "1",
+    "name": "Manya",
+    "todos": [
+      {
+        "id": "1",
+        "title": "Study",
+        "completed": false
+      },
+      {
+        "id": "2",
+        "title": "Sleep early",
+        "completed": true
+      },
+      {
+        "id": "1763490312696",
+        "title": "eat well",
+        "completed": false
+      },
+      {
+        "id": "1763490344348",
+        "title": "eat well",
+        "completed": false
+      },
+      {
+        "id": "1763490345340",
+        "title": "eat well",
+        "completed": false
+      },
+      {
+        "id": "1763490466860",
+        "title": "eat well",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Aman",
+    "todos": [
+      {
+        "id": "1",
+        "title": "Gym",
+        "completed": false
+      }
+    ]
+  }
+]

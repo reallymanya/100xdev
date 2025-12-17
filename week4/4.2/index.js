@@ -15,11 +15,11 @@ app.get('/', (req, res) => {
   const n = parseInt(req.query.n);
   const ans = sum(n);
   res.send('Hello World sum is ' + ans);
-})
+}) //input will be passed as /?n=5
 
 app.post('/', (req, res) => { 
   res.send('Hello World from myside')
 })
 
 
-app.listen(3000) //which part
+app.listen(3000) //which part 
